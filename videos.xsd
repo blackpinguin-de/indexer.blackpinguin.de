@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+<!-- Elemente -->
+
+
+
+<!-- indexer (index, videos) -->
+<xsd:element name="indexer">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element ref="index" minOccurs="1" maxOccurs="1" />
+			<xsd:element ref="videos" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="gendate" type="datetime" use="required" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- index (parent* layer*) -->
+<xsd:element name="index">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element ref="parent" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="layer" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- parent -->
+<xsd:element name="parent">
+	<xsd:complexType>
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+
+<!-- layer (layer* | vref*) -->
+<xsd:element name="layer">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:choice minOccurs="0" maxOccurs="1">
+				<xsd:element ref="layer" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="vref" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+		<xsd:attribute name="url" type="xsd:string" use="required" />
+		<xsd:attribute name="checkbox" type="bool" use="optional" />
+		<xsd:attribute name="videos" type="count" use="optional" />
+		<xsd:attribute name="duration" type="duration" use="optional" />
+		<xsd:attribute name="comments" type="count" use="optional" />
+		<xsd:attribute name="relPath" type="xsd:string" use="optional" />
+		<xsd:attribute name="absPath" type="xsd:string" use="optional" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- vref -->
+<xsd:element name="vref">
+	<xsd:complexType>
+		<xsd:attribute name="id" type="id" use="required" />
+		<xsd:attribute name="title" type="xsd:string" use="required" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- videos (video*) -->
+<xsd:element name="videos">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element ref="video" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="latest" type="id" use="optional" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- video (file*) -->
+<xsd:element name="video">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element ref="file" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="id" use="required" />
+		<xsd:attribute name="url" type="url" use="required" />
+		<xsd:attribute name="title" type="xsd:string" use="required" />
+		<xsd:attribute name="date" type="date" use="required" />
+		<xsd:attribute name="pubdate" type="date" use="required" />
+		<xsd:attribute name="duration" type="duration" use="optional" />
+		<xsd:attribute name="comments" type="count" use="optional" />
+		<xsd:attribute name="author" type="xsd:string" use="required" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- file -->
+<xsd:element name="file">
+	<xsd:complexType>
+		<xsd:attribute name="url" type="url" use="required" />
+		<xsd:attribute name="type" type="xsd:string" use="required" />
+	</xsd:complexType>
+</xsd:element>
+
+
+
+<!-- eigene Datentypen -->
+
+
+
+<xsd:simpleType name="id">
+	<xsd:restriction base="xsd:positiveInteger" />
+</xsd:simpleType>
+
+<xsd:simpleType name="count">
+	<xsd:restriction base="xsd:nonNegativeInteger" />
+</xsd:simpleType>
+
+<xsd:simpleType name="bool">
+	<xsd:restriction base="xsd:string">
+		<xsd:pattern value="(true|false)" />
+	</xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:simpleType name="url">
+	<xsd:restriction base="xsd:string">
+		<xsd:pattern value="https?://.+" />
+	</xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:simpleType name="date">
+	<xsd:restriction base="xsd:string">
+		<xsd:pattern value="[0-9]{4}-(0[1-9]|10|11|12)-(0[1-9]|[1-2][0-9]|30|31)" />
+	</xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:simpleType name="datetime">
+	<xsd:restriction base="xsd:string">
+		<xsd:pattern value="[0-9]{4}-(0[1-9]|10|11|12)-(0[1-9]|[1-2][0-9]|30|31) ([0-1][0-9]|2[0-4]):[0-5][0-9]:([0-5][0-9]|60)" />
+	</xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:simpleType name="duration">
+	<xsd:restriction base="xsd:string">
+		<xsd:pattern value="([0-9]+:)?[0-5][0-9]:[0-5][0-9]" />
+	</xsd:restriction>
+</xsd:simpleType>
+
+
+
+</xsd:schema>

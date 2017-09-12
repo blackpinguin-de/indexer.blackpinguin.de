@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export LANG=de_DE.UTF-8
+cd /rcl/www/indexer/
+
+JAVA="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
+#JAVA="/usr/lib/jvm/java-7-openjdk-i386/jre/bin/java"
+$JAVA -Dfile.encoding=UTF8 -jar MediaIndexer_r44.jar $*

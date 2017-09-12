@@ -1,0 +1,8 @@
+<IfModule mime_module>
+#may need additional rights, alternatively use httpd.conf or mime.types
+AddType application/rss+xml .rss
+AddType application/json .json
+AddType application/xml .xml
+
+AddCharset UTF-8 .html .json .xml .rss .css .js
+</IfModule>
