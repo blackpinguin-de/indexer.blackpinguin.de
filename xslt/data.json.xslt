@@ -75,13 +75,20 @@
 
 
 <xsl:template name="video">
+	<xsl:variable name="title">
+		<xsl:call-template name="str:replace">
+			<xsl:with-param name="string" select="@title" />
+			<xsl:with-param name="search" select="'&quot;'" />
+			<xsl:with-param name="replace" select="'\&quot;'" />
+		</xsl:call-template>
+	</xsl:variable>
 	<xsl:text>{</xsl:text>
 		<xsl:text>"id":</xsl:text><xsl:value-of select="@id"/><xsl:text>,</xsl:text>
 		<xsl:text>"date":"</xsl:text><xsl:value-of select="@date"/><xsl:text>",</xsl:text>
 		<xsl:text>"pubdate":"</xsl:text><xsl:value-of select="@pubdate"/><xsl:text>",</xsl:text>
 		<xsl:if test="@duration"><xsl:text>"duration":"</xsl:text><xsl:value-of select="@duration"/><xsl:text>",</xsl:text></xsl:if>
 		<xsl:text>"author":"</xsl:text><xsl:value-of select="@author"/><xsl:text>",</xsl:text>
-		<xsl:text>"title":"</xsl:text><xsl:value-of select="@title"/><xsl:text>",</xsl:text>
+		<xsl:text>"title":"</xsl:text><xsl:value-of select="$title"/><xsl:text>",</xsl:text>
 		<xsl:text>"url":"</xsl:text><xsl:value-of select="@url"/><xsl:text>",</xsl:text>
 		<xsl:if test="@comments"><xsl:text>"comments":</xsl:text><xsl:value-of select="@comments"/><xsl:text>,</xsl:text></xsl:if>
 		<xsl:text>"files":[</xsl:text>
