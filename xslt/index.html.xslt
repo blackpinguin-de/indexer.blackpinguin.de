@@ -104,7 +104,7 @@
 			<xsl:with-param name="string" select="/indexer[1]/@gendate" />
 			<xsl:with-param name="search" select="' '" />
 			<xsl:with-param name="replace" select="' um '" />
-		</xsl:call-template> Uhr, mit einem Programm von <a href="https://rcl.blackpinguin.de/" target="_blank">Robin C. Ladiges</a>.</p>
+		</xsl:call-template> Uhr, mit einem Programm von <a href="https://rcl.blackpinguin.de/" target="_blank" rel="noopener">Robin C. Ladiges</a>.</p>
 	</footer>
 </body>
 </html>
@@ -256,7 +256,7 @@
 		</input>
 		
 		<!-- Link und Titel -->
-		<a target="_blank">
+		<a target="_blank" rel="noopener">
 			<xsl:attribute name="href"><xsl:value-of select="@url"/></xsl:attribute>
 			<xsl:value-of select="$title"/>
 		</a>
@@ -273,7 +273,7 @@
 		
 		<!-- Videodateien -->
 		<xsl:for-each select="file">
-			<a target="_blank">
+			<a target="_blank" rel="noopener">
 				<xsl:attribute name="href"><xsl:value-of select="@url"/></xsl:attribute>
 				<xsl:value-of select="concat('[',@type,']')"/>
 			</a>

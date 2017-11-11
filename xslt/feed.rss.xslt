@@ -109,7 +109,7 @@
 				<description>
 					<xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
 					
-					<a target="_blank">
+					<a target="_blank" rel="noopener">
 						<xsl:attribute name="href"><xsl:value-of select="$url"/></xsl:attribute>
 						<xsl:value-of select="$title"/>
 					</a>
@@ -124,7 +124,7 @@
 						</xsl:for-each>
 					</video>
 										
-					<br/>Autor: <a target="_blank">
+					<br/>Autor: <a target="_blank" rel="noopener">
 						<xsl:attribute name="href">http://mediathek.mt.haw-hamburg.de/user/view/user/<xsl:value-of select="@author"/></xsl:attribute>
 						<xsl:value-of select="@author"/>
 					</a>
@@ -136,7 +136,7 @@
 					</xsl:if>
 				
 					<br/>Dateien:<xsl:for-each select="file">
-						<xsl:text> </xsl:text><a target="_blank">
+						<xsl:text> </xsl:text><a target="_blank" rel="noopener">
 							<xsl:attribute name="href"><xsl:value-of select="@url"/></xsl:attribute>
 							<xsl:value-of select="@type"/>
 						</a>
