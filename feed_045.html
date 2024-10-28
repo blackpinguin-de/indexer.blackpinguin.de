@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html id="feedHandler" xmlns="http://www.w3.org/1999/xhtml">
+<head xmlns="http://www.w3.org/1999/xhtml">
+<meta content="application/xhtml+xml; charset=UTF-8" http-equiv="Content-Type" />
+
+    <title>Viewing Feed</title>
+    <link rel="stylesheet" href="chrome://browser/skin/feeds/subscribe.css" type="text/css" media="all" />
+    <script type="application/javascript" src="chrome://browser/content/feeds/subscribe.js"></script>
+  </head>
+<body xmlns="http://www.w3.org/1999/xhtml" onload="SubscribeHandler.writeContent();" onunload="SubscribeHandler.uninit();">
+    <div id="feedHeaderContainer">
+      <div id="feedHeader" dir="ltr">
+        <div id="feedIntroText">
+          <p id="feedSubscriptionInfo1"></p>
+          <p id="feedSubscriptionInfo2"></p>
+        </div>
+        <div id="feedSubscribeLine">
+          <label id="subscribeUsingDescription">
+            <select id="handlersMenuList">
+              <option id="liveBookmarksMenuItem" selected="true">Live Bookmarks</option>
+              <option disabled="true">━━━━━━━</option>
+            </select>
+          </label>
+          <label id="checkboxText">
+            <input id="alwaysUse" class="alwaysUse" checked="checked" type="checkbox" />
+          </label>
+          <button id="subscribeButton">Subscribe Now</button>
+        </div>
+      </div>
+      <div id="feedHeaderContainerSpacer"></div>
+    </div>
+
+    <script type="application/javascript">
+      /* import-globals-from subscribe.js */
+      SubscribeHandler.init();
+    </script>
+
+    <div id="feedBody">
+      <div id="feedTitle">
+        <a id="feedTitleLink">
+          <img id="feedTitleImage" />
+        </a>
+        <div id="feedTitleContainer">
+          <h1 id="feedTitleText"></h1>
+          <h2 id="feedSubtitleText"></h2>
+        </div>
+      </div>
+      <div id="feedContent"></div>
+    </div>
+  </body>
+</html>
