@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "Authentifizierung"
+AuthUserFile /rcl/www/.htusers
+Require user istador weitz
+
+Options +Indexes
